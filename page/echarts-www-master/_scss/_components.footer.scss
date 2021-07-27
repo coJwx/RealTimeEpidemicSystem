@@ -1,0 +1,121 @@
+footer {
+    min-height: 236px;
+    background-color: $clr-primary;
+    color: #aaa;
+    font-size: 14px;
+
+    .row {
+        margin-top: 50px !important;
+        margin-bottom: 0 !important;
+    }
+
+    .logo {
+        img {
+            display: block;
+            margin-bottom: 20px;
+            width: 109px;
+        }
+    }
+
+    .footer-apache-logo {
+        width: 300px;
+        max-width: 80%;
+        margin: 0 0 10px 0;
+    }
+
+    #efe-product {
+        li {
+            width: 50%;
+            display: inline-block;
+        }
+    }
+
+    #echarts-copyright {
+        color: rgba(255, 255, 255, 0.4);
+        margin: 65px 0 20px 0;
+        font-size: 1.2rem;
+    }
+
+    h3 {
+        color: #fff;
+        font-size: 1.5rem;
+        margin: 10px 0;
+    }
+
+    ul {
+        height: 150px;
+
+        dt {
+            width: 50%;
+            float: left;
+            font-weight: 300;
+        }
+
+        li {
+            font-weight: 300;
+        }
+
+        a {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 1.2rem;
+            margin: 5px 0;
+
+            &:hover {
+                color: rgba(255, 255, 255, 0.8);
+            }
+        }
+    }
+
+    #footer-icon-panel {
+        text-align: right;
+        font-weight: 300;
+        float: right;
+    }
+
+        .footer-icon {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border-radius: 50px;
+            margin: 5px 0 5px 10px;
+            padding: 8px 10px;
+            border: 1px solid white;
+        }
+}
+
+@media (max-width: 992px) {
+    footer {
+        .footer-apache-logo {
+            margin: 10px -30px 0 0;
+        }
+        .icon-panel {
+            margin: -20px -50px 20px 0;
+            text-align: center;
+        }
+
+        #echarts-copyright {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .footer-icon {
+            margin: 30px 5px 5px 5px;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    footer {
+        .logo img {
+            margin: 0 auto;
+        }
+
+        #footer-icon-panel {
+            text-align: center;
+        }
+
+        #echarts-copyright {
+            text-align: center;
+        }
+    }
+}

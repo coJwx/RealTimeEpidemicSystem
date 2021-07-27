@@ -1,0 +1,164 @@
+﻿<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>首页</title>
+		<link rel="stylesheet" href="./page/layui/css/layui.css"> 
+		<style>
+			body {
+				margin: 0;
+				padding: 0;
+				overflow:hidden;
+			}
+
+			ul {
+				margin: 0;
+				padding: 50px;
+				list-style: none;
+			}
+			/*第一个框*/
+			.firstbox {
+				position: fixed;
+				width: 858px;
+				background-color: #FFF;
+				border: 1px solid #CCC;
+				border-radius: 5px;
+				position:fixed;
+				left:50%;
+				top:40%;
+				transform:translate(-50%,-50%);
+				z-index:1000;     
+				opacity: 0.8; 
+				box-shadow: 3px 0 0 10px #16bc94;
+				font-family: "宋体","微软雅黑";
+			}
+
+			li {
+				display: flex;
+				margin: 20px 0;
+			}
+
+			label, input {
+				display: block;
+				float: left;
+				height: 46px;
+				font-size: 24px;
+				box-sizing: border-box;
+				color: #333;
+			} 
+
+			label {
+				width: 200px;
+				line-height: 46px;
+				margin-right: 30px;
+				text-align: right;
+				text-shadow: 1px 1px 1px #00FF00,-1px -1px 1px #000000 ;
+			}
+
+			input {
+				width: 320px;
+				padding: 8px;
+				line-height: 1;
+				outline: none;
+				position: relative;
+			}
+			input:hover{
+				border:1px solid  #0000FF;
+			}
+			/*疫情最新动态*/
+			input[type=button] {
+				margin-top: 20px;
+				margin-bottom: 20px;
+				border: none;
+				color: #FFF;
+				background-color: #E64145;
+				border-radius: 4px;
+				cursor: pointer;/*光标设置*/
+			}
+
+			input[type=button]:hover{
+				box-shadow: 4px 0 0 5px #16bc94;
+				
+			}
+			/*校标框*/
+			.pictures {
+				margin-top: -20px;    
+				position: absolute;
+				top: -60px;
+				left: 50%;
+				overflow: hidden;
+				width: 130px;
+				height: 130px;
+				margin-left: -65px;
+				border: 10px solid #fff;
+				border-radius: 50%;
+				box-shadow: 0 1px 5px #ccc;
+			} 
+		</style>
+	</head>
+	<body>
+		<script src="./page/layui/layui.js"></script>
+		
+		<canvas id="canvas" style="background:#000000; height: 100%;width: 100%; position: fixed;"></canvas>
+		<div class="firstbox" style="margin-top: 70px;">  
+			<img class="pictures" src="./page/picture/school_h.jpg"> <!--校标 -->
+				<p style="margin:90px 50px 30px; font-size: 20px;text-indent:2em;font-weight: 800;font-size: 25px;">	
+					2019年底，突发了一场严重的疫情。无数志愿者相应号召奔赴湖北武汉。
+					在这些英雄为抑制疫情，拯救民众而不懈努力的同时，为记录下他们的
+					努力成果，也为了让更多人掌握此次疫情的最新动态,我决定设计了这个
+					疫情数据网站。 这里有国内最新的数据动态，也有国外疫情数据，针对
+					国内我们对省份划分范围，能够更好的让用户了解所在地区的疫情情况。
+					我也设计了针对此次疫情谣言鉴别模块,帮助大家更好了解真实情况。
+				</p>
+				<button class="layui-btn layui-btn-danger layui-btn-radius layui-btn-lg" type="button" style="margin-left: 32.7%;margin-bottom: 20px;">
+					<div class="site-doc-icon site-doc-anim">
+						<div class="layui-anim" data-anim="layui-anim-scale">
+							<a href="./page/page.html" style="color: rgb(255, 255, 255);font-weight: 800;font-size: 30px;">疫&ensp;情&ensp;最&ensp;新&ensp;动&ensp;态</a>
+						</div>
+					</div>	
+				</button>
+		</div>  
+		<!--代码雨背景区域-->
+		
+		<script>
+			window.onload = function () {
+				var canvas = document.getElementById("canvas");
+				var context = canvas.getContext("2d");//设置画笔
+				// 获取浏览器宽高
+				var W = window.screen.availWidth;
+				var H = window.screen.availHeight;
+				canvas.width = W;
+				canvas.height = H;
+				var fontSize = 13;//字体大小
+				var colunms = Math.floor(W / fontSize);//字体行数
+				// 坐标
+				var str = "2020注定不凡，抗击疫情，全民同心";
+				var coordinate = [];
+				for (var i = 0; i < colunms; i++) {
+					coordinate.push(0);
+				}
+			
+				function draw() {
+					// 背景色
+					context.fillStyle = "rgba(0,0,0,0.05)";
+					context.fillRect(0, 0, W, H);
+					context.font = "800 " + fontSize + "px  宋体";
+					// 字体颜色
+					context.fillStyle = "#01fef5";
+					for (var i = 0; i < colunms; i++) {
+						var index = Math.floor(Math.random() * str.length);
+						var x = i * fontSize;//一列中一个数字的x坐标
+						var y = coordinate[i] * fontSize;//一列中一个数字的y坐标
+						context.fillText(str[index], x, y);
+						if (y >= canvas.height && Math.random() > 0.95) {
+							coordinate[i] = 0;
+						}
+						coordinate[i]++;
+					}
+				}
+				draw();
+				setInterval(draw, 30);
+			};
+		</script>
+	</body>
+</html>

@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="./style.css">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no"> -->
+    <title>疫情实时数据报告网</title>
+</head>
+
+<body>
+    <script src="./layui/layui.js" charset="utf-8"></script>
+    <script src="./echarts.min.js"></script>
+    <script src="./echarts-www-master/asset/map/js/china.js"></script>
+    <script src="./echarts-www-master/asset/map/js/world.js"></script>
+    <canvas></canvas>
+    <script src="./script.js"></script>
+
+    <div style="width:fit-content;">
+        <button id="btn-index" class="layui-btn" type="button">
+            <div class="site-doc-icon site-doc-anim">
+                <div class="layui-anim" data-anim="layui-anim-scale">
+                    <a href="#internal" class="layui-icon layui-icon-top"
+                        style="font-size: 50px;position:relative;right: 13px;top: 8px; color: #F2F2F2;"></a>
+                </div>
+            </div>
+        </button>
+        <div id="internal">
+            <ul class="layui-nav" id="index">
+                <a class="layui-nav-item" href="http://www.cumt.edu.cn/" target="_blank" style="margin-right: 100px;">
+                    <img src="./picture/school.jpg" alt="图片失效" width="165px" height="40px">
+                </a>
+                <li class="layui-nav-item" lay-unselect>
+                    <a href="#internal-0">
+                        <div class="site-doc-icon site-doc-anim">
+                            <div class="layui-anim" data-anim="layui-anim-scale">国内疫情</div>
+                        </div>
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd lay-unselect>
+                            <a href="#internal-1">
+                                <div class="site-doc-icon site-doc-anim">
+                                    <div class="layui-anim" data-anim="layui-anim-scale">中国疫情地图</div>
+                                </div>
+                            </a>
+                        </dd>
+                        <dd lay-unselect>
+                            <a href="#internal-2">
+                                <div class="site-doc-icon site-doc-anim">
+                                    <div class="layui-anim" data-anim="layui-anim-scale">各地区疫情统计</div>
+                                </div>
+                            </a>
+                        </dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item" lay-unselect>
+                    <a href="#internal-3">
+                        <div class="site-doc-icon site-doc-anim">
+                            <div class="layui-anim" data-anim="layui-anim-scale">国外疫情</div>
+                        </div>
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd lay-unselect>
+                            <a href="#internal-5">
+                                <div class="site-doc-icon site-doc-anim">
+                                    <div class="layui-anim" data-anim="layui-anim-scale">各国家疫情统计</div>
+                                </div>
+                            </a>
+                        </dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item" lay-unselect>
+                    <a href="#internal-6">
+                        <div class="site-doc-icon site-doc-anim">
+                            <div class="layui-anim" data-anim="layui-anim-scale">实时战报</div>
+                        </div>
+                    </a>
+                </li>
+                <li class="layui-nav-item" lay-unselect>
+                    <a href="#internal-7">
+                        <div class="site-doc-icon site-doc-anim">
+                            <div class="layui-anim" data-anim="layui-anim-scale">谣言侦破</div>
+                        </div>
+                    </a>
+                </li>
+                <li class="layui-nav-item" lay-unselect="" id="team">
+                    <a href="javascript:;">
+                        <img class="layui-nav-img" src="./picture/header.jpg"> 制作者
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd>
+                            <a target="_blank" href="./picture/QQ.png">
+                                <div class="site-doc-icon site-doc-anim">
+                                    <div class="layui-anim" data-anim="layui-anim-scale">江卫星</div>
+                                </div>
+                            </a>
+                        </dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+        <div class="all">
+            <div style="background-color: rgb(255, 255, 255);padding: 10px;">
+                <div class="grid-demo grid-demo-bg1">
+                    <div class="layui-carousel" id="test1">
+                        <div carousel-item>
+                            <div>
+                                <a href="./page.html" target="_blank"><img src="./picture/background.jpg" alt="图片失效"
+                                        width="100%">
+                                    <div class="img_text">疫情实时大数据报告</div>
+                                    <div class="img_text1">掌握最新疫情信息</div>
+                                    <div class="img_text1" style="position:absolute;left: 150px;top: 190px;">了解最近新闻动态
+                                    </div>
+                                </a>
+                            </div>
+                            <div style="padding-top: 65px;">
+                                <a href="https://baike.baidu.com/item/武汉/106764?fr=aladdin" target="_blank"><img
+                                        src="./picture/wuhan.jpg" alt="图片失效" width="100%"></a>
+                            </div>
+                            <div style="padding-top: 65px;">
+                                <a href="http://www.360doc.com/content/20/0211/09/57350725_891197553.shtml"
+                                    target="_blank"><img src="./picture/hero.jpg" alt="图片失效" width="100%"></a>
+                            </div>
+                            <div style="padding-top: 65px;">
+                                <a href="https://baike.baidu.com/item/远程办公/1702668?fr=aladdin" target="_blank"><img
+                                        src="./picture/work.jpg" alt="图片失效" width="100%"></a>
+                            </div>
+                            <div style="padding-top: 5px;">
+                                <a href="https://www.zhihu.com/question/362970494?utm_source=wechat_session"
+                                    target="_blank"><img src="./picture/sport.jpg" alt="图片失效" width="100%"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="internal-0"></div>
+                    <div style="padding: 20px; background-color: #F2F2F2;">
+                        <div class="layui-row layui-col-space15">
+                            <div class="layui-col-md12">
+                                <div class="layui-card" style="padding-top: 20px;">
+                                    <fieldset class="layui-elem-field layui-field-title" style="margin: 20px 0px;">
+                                        <legend style="font-size: 30px; font-weight: 400;" class="left">
+                                            <div
+                                                style="border: 2px dashed rgb(218, 218, 218);border-radius:15px;padding: 5px;">
+                                                国内疫情</div>
+                                        </legend>
+                                        <span id="dataTime1"></span>
+                                        <span class="site-demo-button" id="layerDemo"
+                                            style="float: right;margin-right: 10px;">
+                                            <button class="layui-btn layui-btn-xs layui-btn-radius"
+                                                data-method="notice3"
+                                                style="font-size: 15px; background-color: rgb(255,255,255);color: rgb(71, 71, 71);">
+                                                <i class="layui-icon layui-icon-about" style="font-size: 20px;"></i>
+                                                数据说明
+                                            </button>
+                                        </span>
+                                    </fieldset>
+                                    <div class="layui-card-body">
+                                        <div class="layui-card-body-item">
+                                            <div class="layui-card-body-item-A"><span
+                                                    style="position: relative;left: 24px;">现有确诊</span>
+                                                <span class="site-demo-button" id="layerDemo"
+                                                    style="margin-left: 17px;">
+                                                    <button class="layui-btn layui-btn-xs layui-btn-radius"
+                                                        data-method="notice1"
+                                                        style="background-color: rgb(255,255,255);color: rgb(71, 71, 71);">
+                                                        <i class="layui-icon layui-icon-about"
+                                                            style="font-size: 20px;"></i>
+                                                    </button>
+                                                </span>
+                                            </div>
+                                            <div id="layui-card-body-item-1"
+                                                class="layui-card-body-item-size layui-card-body-item-color1"></div>
+                                            <div class="layui-card-body-item-text"><span>较昨日 </span><span
+                                                    id="layui-card-body-item-2"
+                                                    class="layui-card-body-item-color1"></span></div>
+                                        </div>
+                                        <div class="layui-card-body-item">
+                                            <div class="layui-card-body-item-A"><span
+                                                    style="position: relative;left: 24px;">无症状</span>
+                                                <span class="site-demo-button" id="layerDemo"
+                                                    style="margin-left: 17px;">
+                                                    <button class="layui-btn layui-btn-xs layui-btn-radius"
+                                                        data-method="notice2"
+                                                        style="background-color: rgb(255,255,255);color: rgb(71, 71, 71);">
+                                                        <i class="layui-icon layui-icon-about"
+                                                            style="font-size: 20px;"></i>
+                                                    </button>
+                                                </span>
+                                            </div>
+                                            <div id="layui-card-body-item-3"
+                                                class="layui-card-body-item-size layui-card-body-item-color3"></div>
+                                            <div class="layui-card-body-item-text"><span>较昨日 </span><span
+                                                    id="layui-card-body-item-4"
+                                                    class="layui-card-body-item-color1"></span></div>
+                                        </div>
+                                        <div class="layui-card-body-item">
+                                            <div class="layui-card-body-item-A">境外输入</div>
+                                            <div id="layui-card-body-item-11"
+                                                class="layui-card-body-item-size layui-card-body-item-color11"></div>
+                                            <div class="layui-card-body-item-text"><span>较昨日 </span><span
+                                                    id="layui-card-body-item-12"
+                                                    class="layui-card-body-item-color11"></span></div>
+                                        </div>
+                                        <div class="layui-card-body-item">
+                                            <div class="layui-card-body-item-A">累计确诊</div>
+                                            <div id="layui-card-body-item-9"
+                                                class="layui-card-body-item-size layui-card-body-item-color9"></div>
+                                            <div class="layui-card-body-item-text"><span>较昨日 </span><span
+                                                    id="layui-card-body-item-10"
+                                                    class="layui-card-body-item-color9"></span></div>
+                                        </div>
+                                        <div class="layui-card-body-item">
+                                            <div class="layui-card-body-item-A">累计治愈</div>
+                                            <div id="layui-card-body-item-13"
+                                                class="layui-card-body-item-size layui-card-body-item-color13"></div>
+                                            <div class="layui-card-body-item-text"><span>较昨日 </span><span
+                                                    id="layui-card-body-item-14"
+                                                    class="layui-card-body-item-color13"></span></div>
+                                        </div>
+                                        <div class="layui-card-body-item">
+                                            <div class="layui-card-body-item-A">累计死亡</div>
+                                            <div id="layui-card-body-item-15"
+                                                class="layui-card-body-item-size layui-card-body-item-color15"></div>
+                                            <div class="layui-card-body-item-text"><span>较昨日 </span><span
+                                                    id="layui-card-body-item-16"
+                                                    class="layui-card-body-item-color15"></span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief" id="internal-1"
+                                    style="height: 750px; width: 100%;">
+                                    <ul class="layui-tab-title">
+                                        <li class="layui-this">当前确诊</li>
+                                        <li>累计确诊</li>
+                                    </ul>
+                                    <!-- <div class="layui-tab-content" style="height: 720px;overflow: hidden;">
+                                        <div class="layui-tab-item layui-show">
+                                            <iframe src="./中国疫情地图.html" width="100%" height="720px" scrolling="no"></iframe>
+                                            <div class="layui-tab-item layui-show">
+
+
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                    <div class="layui-tab-content" style="height: 720px;overflow: hidden;">
+                                        <div class="layui-tab-item layui-show">
+                                            <div id="myEcharts"></div>
+                                            <script>
+                                                var xhr5 = new XMLHttpRequest();
+                                                xhr5.open('GET', 'https://lab.isaaclin.cn/nCoV/api/area?country=%E4%B8%AD%E5%9B%BD&countryEng=China&latest=true');
+                                                xhr5.send();
+                                                var data5;
+                                                xhr5.onload = function () {
+                                                    var text = xhr5.responseText;
+                                                    var arr = JSON.parse(text);
+                                                    data5 = arr.results;
+                                                    console.log('地图')
+                                                    console.log(data5)
+                                                    for (var i = 0; i < data5.length; i++) {
+                                                        data5[i] = JSON.parse(JSON.stringify(data5[i]).replace('provinceShortName', 'name'));
+                                                        data5[i] = JSON.parse(JSON.stringify(data5[i]).replace('currentConfirmedCount', 'value'));
+                                                    }
+                                                    myChart.setOption({
+                                                        series: [{
+                                                            name: '当前确诊',
+                                                            type: 'map',
+                                                            mapType: 'china',
+                                                            roam: false,
+                                                            label: {
+                                                                show: true,
+                                                                color: 'rgb(0, 0, 0)'
+                                                            },
+                                                            data: data5
+                                                        }]
+                                                    });
+                                                }
+
+                                                var myChart = echarts.init(document.getElementById('myEcharts'));
+                                                option = {
+                                                    title: {
+                                                        text: '中国疫情图',
+                                                        left: 'center'
+                                                    },
+                                                    tooltip: {
+                                                        trigger: 'item'
+                                                    },
+                                                    legend: {
+                                                        orient: 'vertical',
+                                                        left: 'left',
+                                                        data: ['中国疫情图']
+                                                    },
+                                                    visualMap: {
+                                                        type: 'piecewise',
+                                                        pieces: [{
+                                                            min: 10000,
+                                                            max: 1000000,
+                                                            label: '大于等于10000人',
+                                                            color: '#192130'
+                                                        }, {
+                                                            min: 1000,
+                                                            max: 9999,
+                                                            label: '确诊1000-9999人',
+                                                            color: '#283B5E'
+                                                        }, {
+                                                            min: 100,
+                                                            max: 999,
+                                                            label: '确诊100-999人',
+                                                            color: '#3F5C8D'
+                                                        }, {
+                                                            min: 10,
+                                                            max: 99,
+                                                            label: '确诊10-99人',
+                                                            color: '#81A1D8'
+                                                        }, {
+                                                            min: 1,
+                                                            max: 9,
+                                                            label: '确诊1-9人',
+                                                            color: '#C3D3F0'
+                                                        },],
+                                                        color: ['#E0022B', '#E09107', '#A3E00B']
+                                                    },
+                                                    toolbox: {
+                                                        show: true,
+                                                        orient: 'vertical',
+                                                        left: 'left',
+                                                        top: 'center',
+                                                        feature: {
+                                                            mark: {
+                                                                show: true
+                                                            },
+                                                            dataView: {
+                                                                show: true,
+                                                                readOnly: false
+                                                            },
+                                                            restore: {
+                                                                show: true
+                                                            },
+                                                            saveAsImage: {
+                                                                show: true
+                                                            }
+                                                        }
+                                                    },
+                                                    roamController: {
+                                                        show: true,
+                                                        left: 'right',
+                                                        mapTypeControl: {
+                                                            'china': true
+                                                        }
+                                                    },
+                                                    series: [{
+                                                        name: '确诊数',
+                                                        type: 'map',
+                                                        mapType: 'china',
+                                                        roam: false,
+                                                        label: {
+                                                            show: true,
+                                                            color: 'rgb(249, 249, 249)'
+                                                        },
+
+                                                        data: []
+                                                    }]
+                                                };
+                                                myChart.setOption(option);
+                                            </script>
+                                        </div>
+
+                                        <div class="layui-tab-item layui-show">
+                                            <div id="myEcharts1"></div>
+                                            <script>
+                                                var xhr6 = new XMLHttpRequest();
+                                                xhr6.open('GET', 'https://lab.isaaclin.cn/nCoV/api/area?country=%E4%B8%AD%E5%9B%BD&countryEng=China&latest=true');
+                                                xhr6.send();
+                                                var data6;
+                                                xhr6.onload = function () {
+                                                    var text = xhr6.responseText;
+                                                    var arr = JSON.parse(text);
+                                                    data6 = arr.results;
+                                                    for (var i = 0; i < data5.length; i++) {
+                                                        data6[i] = JSON.parse(JSON.stringify(data6[i]).replace('provinceShortName', 'name'));
+                                                        data6[i] = JSON.parse(JSON.stringify(data6[i]).replace('confirmedCount', 'value'));
+                                                    }
+                                                    myChart1.setOption({
+                                                        series: [{
+                                                            name: '累计确诊',
+                                                            type: 'map',
+                                                            mapType: 'china',
+                                                            roam: false,
+                                                            label: {
+                                                                show: true,
+                                                                color: 'rgb(0, 0, 0)'
+                                                            },
+                                                            data: data6
+                                                        }]
+                                                    });
+                                                }
+                                                var myChart1 = echarts.init(document.getElementById('myEcharts1'));
+                                                option = {
+                                                    title: {
+                                                        text: '中国疫情图',
+                                                        left: 'center'
+                                                    },
+                                                    tooltip: {
+                                                        trigger: 'item'
+                                                    },
+                                                    legend: {
+                                                        orient: 'vertical',
+                                                        left: 'left',
+                                                        data: ['中国疫情图']
+                                                    },
+                                                    visualMap: {
+                                                        type: 'piecewise',
+                                                        pieces: [{
+                                                            min: 10000,
+                                                            max: 1000000,
+                                                            label: '大于等于10000人',
+                                                            color: '#192130'
+                                                        }, {
+                                                            min: 1000,
+                                                            max: 9999,
+                                                            label: '确诊1000-9999人',
+                                                            color: '#283B5E'
+                                                        }, {
+                                                            min: 100,
+                                                            max: 999,
+                                                            label: '确诊100-999人',
+                                                            color: '#3F5C8D'
+                                                        }, {
+                                                            min: 10,
+                                                            max: 99,
+                                                            label: '确诊10-99人',
+                                                            color: '#81A1D8'
+                                                        }, {
+                                                            min: 1,
+                                                            max: 9,
+                                                            label: '确诊1-9人',
+                                                            color: '#C3D3F0'
+                                                        },],
+                                                        color: ['#E0022B', '#E09107', '#A3E00B']
+                                                    },
+                                                    toolbox: {
+                                                        show: true,
+                                                        orient: 'vertical',
+                                                        left: 'left',
+                                                        top: 'center',
+                                                        feature: {
+                                                            mark: {
+                                                                show: true
+                                                            },
+                                                            dataView: {
+                                                                show: true,
+                                                                readOnly: false
+                                                            },
+                                                            restore: {
+                                                                show: true
+                                                            },
+                                                            saveAsImage: {
+                                                                show: true
+                                                            }
+                                                        }
+                                                    },
+                                                    roamController: {
+                                                        show: true,
+                                                        left: 'right',
+                                                        mapTypeControl: {
+                                                            'china': true
+                                                        }
+                                                    },
+                                                    series: [{
+                                                        name: '确诊数',
+                                                        type: 'map',
+                                                        mapType: 'china',
+                                                        roam: false,
+                                                        label: {
+                                                            show: true,
+                                                            color: 'rgb(249, 249, 249)'
+                                                        },
+
+                                                        data: []
+                                                    }]
+                                                };
+                                                myChart1.setOption(option);
+                                            </script>
+                                        </div>
+                                    </div>
+                                    <div id="internal-2"></div>
+                                    <div class="layui-col-md12">
+                                        <div class="layui-card">
+                                            <div class="layui-card-header">国内各地区疫情统计</div>
+                                            <div class="layui-card-body">
+                                                <table class="layui-hide" id="demo"></table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="internal-3" style="background-color: #F2F2F2;">
+                            <!-- 国外疫情 -->
+                            <div style="padding: 0px;">
+                                <div class="layui-row layui-col-space15">
+                                    <div class="layui-col-md12">
+                                        <div class="layui-card" style="padding-top: 20px;">
+                                            <fieldset class="layui-elem-field layui-field-title"
+                                                style="margin: 20px 0px;">
+                                                <legend style="font-size: 30px; font-weight: 400;" class="left">
+                                                    <div
+                                                        style="border: 2px dashed rgb(218, 218, 218);border-radius:15px;padding: 5px;">
+                                                        国外疫情</div>
+                                                </legend>
+                                                <span id="dataTime2"></span>
+                                                <span class="site-demo-button" id="layerDemo"
+                                                    style="float: right;margin-right: 10px;">
+                                                    <button class="layui-btn layui-btn-xs layui-btn-radius"
+                                                        data-method="notice4"
+                                                        style="font-size: 15px; background-color: rgb(255,255,255);color: rgb(71, 71, 71);">
+                                                        <i class="layui-icon layui-icon-about"
+                                                            style="font-size: 20px;"></i>
+                                                        数据说明
+                                                    </button>
+                                                </span>
+                                            </fieldset>
+                                            <div class="layui-card-body">
+                                                <div class="layui-card-body-item1">
+                                                    <div class="layui-card-body-item-A">现有确诊</div>
+                                                    <div id="layui-card-body-item-a1"
+                                                        class="layui-card-body-item-size layui-card-body-item-color1">
+                                                    </div>
+                                                    <div class="layui-card-body-item-text"><span>较昨日 </span><span
+                                                            id="layui-card-body-item-b1"
+                                                            class="layui-card-body-item-color1"></span></div>
+                                                </div>
+                                                <div class="layui-card-body-item1">
+                                                    <div class="layui-card-body-item-A">累计确诊</div>
+                                                    <div id="layui-card-body-item-a2"
+                                                        class="layui-card-body-item-size layui-card-body-item-color9">
+                                                    </div>
+                                                    <div class="layui-card-body-item-text"><span>较昨日 </span><span
+                                                            id="layui-card-body-item-b2"
+                                                            class="layui-card-body-item-color9"></span></div>
+                                                </div>
+                                                <div class="layui-card-body-item1">
+                                                    <div class="layui-card-body-item-A">累计治愈</div>
+                                                    <div id="layui-card-body-item-a3"
+                                                        class="layui-card-body-item-size layui-card-body-item-color13">
+                                                    </div>
+                                                    <div class="layui-card-body-item-text"><span>较昨日 </span><span
+                                                            id="layui-card-body-item-b3"
+                                                            class="layui-card-body-item-color13"></span></div>
+                                                </div>
+                                                <div class="layui-card-body-item1">
+                                                    <div class="layui-card-body-item-A">累计死亡</div>
+                                                    <div id="layui-card-body-item-a4"
+                                                        class="layui-card-body-item-size layui-card-body-item-color15">
+                                                    </div>
+                                                    <div class="layui-card-body-item-text"><span>较昨日 </span><span
+                                                            id="layui-card-body-item-b4"
+                                                            class="layui-card-body-item-color15"></span></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="internal-5"></div>
+                                        <div class="layui-col-md12">
+                                            <div class="layui-card">
+                                                <div class="layui-card-header">国外各地区疫情统计</div>
+                                                <div class="layui-card-body">
+                                                    <table class="layui-hide" id="demo1"></table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="internal-6" class="left">
+                            <!-- 实时战报 -->
+                            <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+                                <legend style="font-size: 30px; font-weight: 400;">
+                                    <div style="border: 2px dashed rgb(218, 218, 218);border-radius:15px;padding: 5px;">
+                                        实时战报</div>
+                                </legend>
+                            </fieldset>
+                            <ul class="layui-timeline">
+                                <li class="layui-timeline-item">
+                                    <i class="layui-icon layui-timeline-axis"></i>
+                                    <div class="layui-timeline-content layui-text">
+                                        <h3 class="layui-timeline-title" id="layui-timeline-title-1a"
+                                            style="font-size: 30px;">4月18日</h3>
+                                        <p style="margin-top: 30px;">
+                                            <a href="" id="layui-timeline-title-1b" style="font-size: 22px;"
+                                                target="_blank">内容1</a>
+                                        <div id="layui-timeline-title-1c"
+                                            style="text-indent:2em;margin: 10px 0px 20px 0px;">123</div>
+                                    </div>
+                                </li>
+                                <li class="layui-timeline-item">
+                                    <i class="layui-icon layui-timeline-axis"></i>
+                                    <div class="layui-timeline-content layui-text">
+                                        <h3 class="layui-timeline-title" id="layui-timeline-title-2a"
+                                            style="font-size: 30px;">4月16日</h3>
+                                        <p style="margin-top: 30px;">
+                                            <a href="" id="layui-timeline-title-2b" style="font-size: 22px;"
+                                                target="_blank">内容2</a>
+                                        <div id="layui-timeline-title-2c"
+                                            style="text-indent:2em;margin: 10px 0px 20px 0px;">123</div>
+                                    </div>
+                                </li>
+                                <li class="layui-timeline-item">
+                                    <i class="layui-icon layui-timeline-axis"></i>
+                                    <div class="layui-timeline-content layui-text">
+                                        <h3 class="layui-timeline-title" id="layui-timeline-title-3a"
+                                            style="font-size: 30px;">4月15日</h3>
+                                        <p style="margin-top: 30px;">
+                                            <a href="" id="layui-timeline-title-3b" style="font-size: 22px;"
+                                                target="_blank">内容3</a>
+                                        <div id="layui-timeline-title-3c"
+                                            style="text-indent:2em;margin: 10px 0px 20px 0px;">123</div>
+                                    </div>
+                                </li>
+                                <li class="layui-timeline-item">
+                                    <i class="layui-icon layui-timeline-axis"></i>
+                                    <div class="layui-timeline-content layui-text">
+                                        <h3 class="layui-timeline-title" id="layui-timeline-title-4a"
+                                            style="font-size: 30px;">4月15日</h3>
+                                        <p style="margin-top: 30px;">
+                                            <a href="" id="layui-timeline-title-4b" style="font-size: 22px;"
+                                                target="_blank">内容4</a>
+                                        <div id="layui-timeline-title-4c"
+                                            style="text-indent:2em;margin: 10px 0px 20px 0px;">123</div>
+                                    </div>
+                                </li>
+                                <li class="layui-timeline-item">
+                                    <i class="layui-icon layui-timeline-axis"></i>
+                                    <div class="layui-timeline-content layui-text">
+                                        <h3 class="layui-timeline-title" id="layui-timeline-title-5a"
+                                            style="font-size: 30px;">4月15日</h3>
+                                        <p style="margin-top: 30px;">
+                                            <a href="" id="layui-timeline-title-5b" style="font-size: 22px;"
+                                                target="_blank">内容5</a>
+                                        <div id="layui-timeline-title-5c"
+                                            style="text-indent:2em;margin: 10px 0px 20px 0px;">123</div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div id="internal-7" class="left">
+                            <!-- 谣言侦破 -->
+                            <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+                                <legend style="font-size: 30px; font-weight: 400;">
+                                    <div style="border: 2px dashed rgb(218, 218, 218);border-radius:15px;padding: 5px;">
+                                        谣言侦破</div>
+                                </legend>
+                            </fieldset>
+                            <div>
+                                <div class="layui-collapse" lay-accordion="">
+                                    <div class="layui-colla-item">
+                                        <h2 class="layui-colla-title"></h2>
+                                        <div class="layui-colla-content layui-show"
+                                            style="overflow: hidden;position: relative;">
+                                            <div class="layui-colla-content-explain"></div>
+                                            <div class="layui-colla-content-date"></div>
+                                            <div class="layui-colla-content-desc"></div>
+                                            <div class="layui-colla-content-author"></div>
+                                            <div style="position: absolute;right: 5px;bottom: 5px;width: 35%;">
+                                                <img src="" alt="无法显示,请尝试刷新页面" class="layui-colla-content-imgsrc"
+                                                    style="width: 100%;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="layui-colla-item">
+                                        <h2 class="layui-colla-title"></h2>
+                                        <div class="layui-colla-content" style="overflow: hidden;position: relative;">
+                                            <div class="layui-colla-content-explain"></div>
+                                            <div class="layui-colla-content-date"></div>
+                                            <div class="layui-colla-content-desc"></div>
+                                            <div class="layui-colla-content-author"></div>
+                                            <div style="position: absolute;right: 5px;bottom: 5px;width: 35%;">
+                                                <img src="" alt="无法显示,请尝试刷新页面" class="layui-colla-content-imgsrc"
+                                                    style="width: 100%;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="layui-colla-item">
+                                        <h2 class="layui-colla-title"></h2>
+                                        <div class="layui-colla-content" style="overflow: hidden;position: relative;">
+                                            <div class="layui-colla-content-explain"></div>
+                                            <div class="layui-colla-content-date"></div>
+                                            <div class="layui-colla-content-desc"></div>
+                                            <div class="layui-colla-content-author"></div>
+                                            <div style="position: absolute;right: 5px;bottom: 5px;width: 35%;">
+                                                <img src="" alt="无法显示,请尝试刷新页面" class="layui-colla-content-imgsrc"
+                                                    style="width: 100%;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="layui-colla-item">
+                                        <h2 class="layui-colla-title"></h2>
+                                        <div class="layui-colla-content" style="overflow: hidden;position: relative;">
+                                            <div class="layui-colla-content-explain"></div>
+                                            <div class="layui-colla-content-date"></div>
+                                            <div class="layui-colla-content-desc"></div>
+                                            <div class="layui-colla-content-author"></div>
+                                            <div style="position: absolute;right: 5px;bottom: 5px;width: 35%;">
+                                                <img src="" alt="无法显示,请尝试刷新页面" class="layui-colla-content-imgsrc"
+                                                    style="width: 100%;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="layui-colla-item">
+                                        <h2 class="layui-colla-title"></h2>
+                                        <div class="layui-colla-content" style="overflow: hidden;position: relative;">
+                                            <div class="layui-colla-content-explain"></div>
+                                            <div class="layui-colla-content-date"></div>
+                                            <div class="layui-colla-content-desc"></div>
+                                            <div class="layui-colla-content-author"></div>
+                                            <div style="position: absolute;right: 5px;bottom: 5px;width: 35%;">
+                                                <img src="" alt="无法显示,请尝试刷新页面" class="layui-colla-content-imgsrc"
+                                                    style="width: 100%;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="layui-colla-item">
+                                        <h2 class="layui-colla-title"></h2>
+                                        <div class="layui-colla-content" style="overflow: hidden;position: relative;">
+                                            <div class="layui-colla-content-explain"></div>
+                                            <div class="layui-colla-content-date"></div>
+                                            <div class="layui-colla-content-desc"></div>
+                                            <div class="layui-colla-content-author"></div>
+                                            <div style="position: absolute;right: 5px;bottom: 5px;width: 35%;">
+                                                <img src="" alt="无法显示,请尝试刷新页面" class="layui-colla-content-imgsrc"
+                                                    style="width: 100%;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="layui-colla-item">
+                                        <h2 class="layui-colla-title"></h2>
+                                        <div class="layui-colla-content" style="overflow: hidden;position: relative;">
+                                            <div class="layui-colla-content-explain"></div>
+                                            <div class="layui-colla-content-date"></div>
+                                            <div class="layui-colla-content-desc"></div>
+                                            <div class="layui-colla-content-author"></div>
+                                            <div style="position: absolute;right: 5px;bottom: 5px;width: 35%;">
+                                                <img src="" alt="无法显示,请尝试刷新页面" class="layui-colla-content-imgsrc"
+                                                    style="width: 100%;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="layui-colla-item">
+                                        <h2 class="layui-colla-title"></h2>
+                                        <div class="layui-colla-content" style="overflow: hidden;position: relative;">
+                                            <div class="layui-colla-content-explain"></div>
+                                            <div class="layui-colla-content-date"></div>
+                                            <div class="layui-colla-content-desc"></div>
+                                            <div class="layui-colla-content-author"></div>
+                                            <div style="position: absolute;right: 5px;bottom: 5px;width: 35%;">
+                                                <img src="" alt="无法显示,请尝试刷新页面" class="layui-colla-content-imgsrc"
+                                                    style="width: 100%;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="layui-colla-item">
+                                        <h2 class="layui-colla-title"></h2>
+                                        <div class="layui-colla-content" style="overflow: hidden;position: relative;">
+                                            <div class="layui-colla-content-explain"></div>
+                                            <div class="layui-colla-content-date"></div>
+                                            <div class="layui-colla-content-desc"></div>
+                                            <div class="layui-colla-content-author"></div>
+                                            <div style="position: absolute;right: 5px;bottom: 5px;width: 35%;">
+                                                <img src="" alt="无法显示,请尝试刷新页面" class="layui-colla-content-imgsrc"
+                                                    style="width: 100%;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="layui-colla-item">
+                                        <h2 class="layui-colla-title"></h2>
+                                        <div class="layui-colla-content" style="overflow: hidden;position: relative;">
+                                            <div class="layui-colla-content-explain"></div>
+                                            <div class="layui-colla-content-date"></div>
+                                            <div class="layui-colla-content-desc"></div>
+                                            <div class="layui-colla-content-author"></div>
+                                            <div style="position: absolute;right: 5px;bottom: 5px;width: 35%;">
+                                                <img src="" alt="无法显示,请尝试刷新页面" class="layui-colla-content-imgsrc"
+                                                    style="width: 100%;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
