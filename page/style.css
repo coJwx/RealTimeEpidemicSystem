@@ -35,8 +35,12 @@
     padding-top: 70px;
 }
 
-#team {
+#developer {
     float: right;
+}
+
+#developer dl{
+    left: -70px;
 }
 
 #dataTime1 {
