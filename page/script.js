@@ -175,7 +175,7 @@ layui.use('carousel', function() {
 //创建Ajax对象
 var xhr = new XMLHttpRequest();
 //open打开连接
-xhr.open('GET', 'http://api.tianapi.com/txapi/ncov/index?key=1ebfbacaefe5dfc4e61094ff1e34c5b9');
+xhr.open('GET', 'https://api.tianapi.com/txapi/ncov/index?key=1ebfbacaefe5dfc4e61094ff1e34c5b9');
 //send发送连接
 xhr.send();
 //响应成功        
@@ -318,7 +318,7 @@ xhr1.onload = function() {
 
 // 国外疫情数据获取
 var xhr3 = new XMLHttpRequest();
-xhr3.open('GET', 'http://api.tianapi.com/txapi/ncov/index?key=1ebfbacaefe5dfc4e61094ff1e34c5b9');
+xhr3.open('GET', 'https://api.tianapi.com/txapi/ncov/index?key=1ebfbacaefe5dfc4e61094ff1e34c5b9');
 xhr3.send();
 xhr3.onload = function() {
     var text = xhr3.responseText;
@@ -356,7 +356,7 @@ xhr3.onload = function() {
 
 //国外各国家数据表格
 var xhr4 = new XMLHttpRequest();
-xhr4.open('GET', 'http://api.tianapi.com/txapi/ncovabroad/index?key=1ebfbacaefe5dfc4e61094ff1e34c5b9');
+xhr4.open('GET', 'https://api.tianapi.com/txapi/ncovabroad/index?key=1ebfbacaefe5dfc4e61094ff1e34c5b9');
 xhr4.send();
 var data4;
 xhr4.onload = function() {
@@ -390,7 +390,7 @@ xhr4.onload = function() {
 
 //谣言鉴别数据的获取
 var xhr2 = new XMLHttpRequest();
-xhr2.open('GET', 'http://api.tianapi.com/txapi/rumour/index?key=1ebfbacaefe5dfc4e61094ff1e34c5b9');
+xhr2.open('GET', 'https://api.tianapi.com/txapi/rumour/index?key=1ebfbacaefe5dfc4e61094ff1e34c5b9');
 xhr2.send();
 xhr2.onload = function() {
     var text = xhr2.responseText;
